@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#f0f4f7"
     tools:context=".MainActivity">
 
     <!-- Title Text -->
@@ -11,35 +12,55 @@
         android:id="@+id/textTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Pembuat Kartu Ucapan"
-        android:textSize="24sp"
+        android:text="Buat Kartu Ucapan"
+        android:textSize="26sp"
         android:textStyle="bold"
+        android:textColor="#333333"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="32dp" />
+        android:layout_marginTop="48dp" />
 
-    <!-- EditText for entering the recipient's name -->
-    <EditText
-        android:id="@+id/editTextName"
+    <!-- CardView untuk membungkus EditText dan Button -->
+    <androidx.cardview.widget.CardView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Masukkan Nama Penerima"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="6dp"
+        android:layout_margin="16dp"
+        android:padding="16dp"
         app:layout_constraintTop_toBottomOf="@id/textTitle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"/>
+        android:layout_marginTop="24dp">
 
-    <!-- Button to create the greeting card -->
-    <Button
-        android:id="@+id/buttonCreateCard"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Buat Kartu Ucapan"
-        app:layout_constraintTop_toBottomOf="@id/editTextName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <!-- EditText for entering the recipient's name -->
+            <EditText
+                android:id="@+id/editTextName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Masukkan Nama Penerima"
+                android:padding="12dp"
+                android:backgroundTint="#DDDDDD"
+                android:layout_marginBottom="16dp"
+                android:inputType="textPersonName" />
+
+            <!-- Button to create the greeting card -->
+            <Button
+                android:id="@+id/buttonCreateCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Buat Kartu Ucapan"
+                android:padding="12dp"
+                android:backgroundTint="#4CAF50"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

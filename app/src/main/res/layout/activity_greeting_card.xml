@@ -1,25 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <!-- ScrollView untuk memungkinkan teks bergulir jika diperlukan -->
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:padding="16dp">
 
-        <!-- TextView untuk menampilkan kartu ucapan -->
-        <TextView
-            android:id="@+id/textViewGreeting"
+        <!-- CardView untuk memberikan efek sudut melengkung pada kartu ucapan -->
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="24dp"
-            android:textSize="20sp"
-            android:background="@android:color/holo_blue_light"
-            android:textColor="@android:color/white"
-            android:gravity="center"
-            android:text="Selamat Hari Spesial!" />
+            android:layout_margin="16dp"
+            android:padding="16dp"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- FrameLayout untuk membuat gambar bertumpuk -->
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp">
+
+                    <!-- Background image -->
+                    <ImageView
+                        android:id="@+id/imageViewBackground"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/img" />
+
+                    <!-- Small overlay image positioned at the top-center of the background image -->
+                    <ImageView
+                        android:id="@+id/imageViewOverlay"
+                        android:layout_width="158dp"
+                        android:layout_height="188dp"
+                        android:layout_gravity="top|center_horizontal"
+                        android:src="@drawable/img2" />
+                </FrameLayout>
+
+                <!-- TextView untuk menampilkan teks ucapan -->
+                <TextView
+                    android:id="@+id/textViewGreeting"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:padding="24dp"
+                    android:textSize="20sp"
+                    android:background="@android:color/holo_blue_light"
+                    android:textColor="@android:color/white"
+                    android:gravity="center"
+                    android:text="Selamat Hari Spesial!" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
     </ScrollView>
+
+    <!-- Button untuk kembali ke MainActivity -->
+    <Button
+        android:id="@+id/buttonBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kembali"
+        android:layout_gravity="bottom|start"
+        android:layout_margin="16dp"
+        android:backgroundTint="#FF4081"
+        android:textColor="@android:color/white" />
+
+    <!-- Button untuk download kartu ucapan -->
+    <Button
+        android:id="@+id/buttonDownload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Download Card"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:backgroundTint="#4CAF50"
+        android:textColor="@android:color/white" />
 
 </FrameLayout>

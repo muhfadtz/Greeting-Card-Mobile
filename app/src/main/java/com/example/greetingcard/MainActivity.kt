@@ -1,10 +1,11 @@
 package com.example.greetingcard
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,12 +19,18 @@ class MainActivity : AppCompatActivity() {
 
         // Membuat kartu ucapan saat tombol ditekan
         createButton.setOnClickListener {
-            val name = nameEditText.text.toString()
+            val name = nameEditText.text.toString().trim() // Menghapus spasi di awal dan akhir
 
-            // Membuat Intent untuk memulai GreetingCardActivity
-            val intent = Intent(this, GreetingCardActivity::class.java)
-            intent.putExtra("RECIPIENT_NAME", name) // Mengirim nama penerima
-            startActivity(intent)
+            // Memeriksa apakah input kosong
+            if (name.isEmpty()) {
+                // Menampilkan toast jika nama tidak diisi
+                Toast.makeText(this, "Mohon masukkan nama penerima", Toast.LENGTH_SHORT).show()
+            } else {
+                // Membuat Intent untuk memulai GreetingCardActivity
+                val intent = Intent(this, GreetingCardActivity::class.java)
+                intent.putExtra("RECIPIENT_NAME", name) // Mengirim nama penerima
+                startActivity(intent)
+            }
         }
     }
 }
