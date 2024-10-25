@@ -37,3 +37,4 @@ Nama: Muhammad Fadhlan Tanjung
 NIM: 221401109
 Lab: 6
 
+Prototype: https://bit.ly/40i7QuM
