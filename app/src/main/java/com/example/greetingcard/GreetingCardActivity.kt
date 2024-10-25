@@ -38,6 +38,12 @@ class GreetingCardActivity : AppCompatActivity() {
         buttonDownload.setOnClickListener {
             downloadCard()
         }
+
+        // Tombol Share
+        val buttonShare = findViewById<Button>(R.id.buttonShare)
+        buttonShare.setOnClickListener {
+            shareCard(greetingTextView.text.toString())
+        }
     }
 
     private fun downloadCard() {
@@ -62,5 +68,17 @@ class GreetingCardActivity : AppCompatActivity() {
             e.printStackTrace()
             Toast.makeText(this, "Gagal menyimpan kartu ucapan", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    private fun shareCard(greetingText: String) {
+        // Membuat implicit intent untuk berbagi
+        val shareIntent = Intent().apply {
+            action = Intent.ACTION_SEND
+            putExtra(Intent.EXTRA_TEXT, greetingText) // Mengirimkan teks ucapan
+            type = "text/plain" // Menentukan tipe data
+        }
+
+        // Menampilkan chooser untuk memilih aplikasi
+        startActivity(Intent.createChooser(shareIntent, "Bagikan kartu ucapan menggunakan"))
     }
 }
