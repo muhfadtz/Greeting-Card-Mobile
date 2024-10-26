@@ -25,37 +25,36 @@ class GreetingCardActivity : AppCompatActivity() {
 
         // Menghubungkan komponen TextView dari layout
         val greetingTextView = findViewById<TextView>(R.id.textViewGreeting)
-        greetingTextView.text = "Selamat Hari Spesial, $recipientName! Semoga harimu menyenangkan!"
+        greetingTextView.text = getString(R.string.greeting_text, recipientName)
 
         // Tombol Kembali
         val buttonBack = findViewById<Button>(R.id.buttonBack)
+        buttonBack.text = getString(R.string.button_back)
         buttonBack.setOnClickListener {
             finish() // Menutup aktivitas saat ini dan kembali ke MainActivity
         }
 
         // Tombol Download Card
         val buttonDownload = findViewById<Button>(R.id.buttonDownload)
+        buttonDownload.text = getString(R.string.button_download)
         buttonDownload.setOnClickListener {
             downloadCard()
         }
 
         // Tombol Share
         val buttonShare = findViewById<Button>(R.id.buttonShare)
+        buttonShare.text = getString(R.string.button_share)
         buttonShare.setOnClickListener {
             shareCard(greetingTextView.text.toString())
         }
     }
 
     private fun downloadCard() {
-        // View yang ingin disimpan sebagai gambar
         val cardView = findViewById<View>(R.id.textViewGreeting)
-
-        // Membuat bitmap dari tampilan
         val bitmap = Bitmap.createBitmap(cardView.width, cardView.height, Bitmap.Config.ARGB_8888)
         val canvas = Canvas(bitmap)
         cardView.draw(canvas)
 
-        // Menyimpan gambar ke galeri
         try {
             val filePath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
             val file = File(filePath, "greeting_card.png")
@@ -63,22 +62,19 @@ class GreetingCardActivity : AppCompatActivity() {
             bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
             outputStream.flush()
             outputStream.close()
-            Toast.makeText(this, "Kartu ucapan berhasil disimpan", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.download_success), Toast.LENGTH_SHORT).show()
         } catch (e: IOException) {
             e.printStackTrace()
-            Toast.makeText(this, "Gagal menyimpan kartu ucapan", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.download_failure), Toast.LENGTH_SHORT).show()
         }
     }
 
     private fun shareCard(greetingText: String) {
-        // Membuat implicit intent untuk berbagi
         val shareIntent = Intent().apply {
             action = Intent.ACTION_SEND
-            putExtra(Intent.EXTRA_TEXT, greetingText) // Mengirimkan teks ucapan
-            type = "text/plain" // Menentukan tipe data
+            putExtra(Intent.EXTRA_TEXT, greetingText)
+            type = "text/plain"
         }
-
-        // Menampilkan chooser untuk memilih aplikasi
-        startActivity(Intent.createChooser(shareIntent, "Bagikan kartu ucapan menggunakan"))
+        startActivity(Intent.createChooser(shareIntent, getString(R.string.share_with)))
     }
 }

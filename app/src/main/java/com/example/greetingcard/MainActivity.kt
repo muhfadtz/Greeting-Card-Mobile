@@ -19,16 +19,16 @@ class MainActivity : AppCompatActivity() {
 
         // Membuat kartu ucapan saat tombol ditekan
         createButton.setOnClickListener {
-            val name = nameEditText.text.toString().trim() // Menghapus spasi di awal dan akhir
+            val name = nameEditText.text.toString().trim()
 
             // Memeriksa apakah input kosong
             if (name.isEmpty()) {
                 // Menampilkan toast jika nama tidak diisi
-                Toast.makeText(this, "Mohon masukkan nama penerima", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.empty_name_toast), Toast.LENGTH_SHORT).show()
             } else {
                 // Membuat Intent untuk memulai GreetingCardActivity
                 val intent = Intent(this, GreetingCardActivity::class.java)
-                intent.putExtra("RECIPIENT_NAME", name) // Mengirim nama penerima
+                intent.putExtra("RECIPIENT_NAME", name)
                 startActivity(intent)
             }
         }

@@ -4,13 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- ScrollView untuk memungkinkan teks bergulir jika diperlukan -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp">
 
-        <!-- CardView untuk memberikan efek sudut melengkung pada kartu ucapan -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -24,12 +22,10 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <!-- FrameLayout untuk membuat gambar bertumpuk -->
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="150dp">
 
-                    <!-- Background image -->
                     <ImageView
                         android:id="@+id/imageViewBackground"
                         android:layout_width="match_parent"
@@ -37,7 +33,6 @@
                         android:scaleType="centerCrop"
                         android:src="@drawable/img" />
 
-                    <!-- Small overlay image positioned at the top-center of the background image -->
                     <ImageView
                         android:id="@+id/imageViewOverlay"
                         android:layout_width="158dp"
@@ -46,7 +41,6 @@
                         android:src="@drawable/img2" />
                 </FrameLayout>
 
-                <!-- TextView untuk menampilkan teks ucapan -->
                 <TextView
                     android:id="@+id/textViewGreeting"
                     android:layout_width="match_parent"
@@ -63,29 +57,26 @@
         </androidx.cardview.widget.CardView>
     </ScrollView>
 
-    <!-- Button untuk kembali ke MainActivity -->
     <Button
         android:id="@+id/buttonBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Kembali"
+        android:text="@string/button_back"
         android:layout_gravity="bottom|start"
         android:layout_margin="16dp"
         android:backgroundTint="#FF4081"
         android:textColor="@android:color/white" />
 
-    <!-- Button untuk download kartu ucapan -->
     <Button
         android:id="@+id/buttonDownload"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Download Card"
+        android:text="@string/button_download"
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
         android:backgroundTint="#4CAF50"
         android:textColor="@android:color/white" />
 
-    <!-- Button untuk share kartu ucapan -->
     <Button
         android:id="@+id/buttonShare"
         android:layout_width="wrap_content"
@@ -93,7 +84,7 @@
         android:layout_gravity="bottom|center_horizontal"
         android:layout_margin="16dp"
         android:backgroundTint="#3F51B5"
-        android:text="Share"
+        android:text="@string/button_share"
         android:textColor="@android:color/white" />
 
 </FrameLayout>
